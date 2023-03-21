@@ -100,6 +100,7 @@ async function postEpisode(youtubeVideoInfo) {
     and because pupeteer treats the page as loaded(or navigated to) 
     even when the form is not showed
     */
+    console.log(page);
     await page.waitForSelector('#email');
     await page.type('#email', env.ANCHOR_EMAIL);
     await page.type('#password', env.ANCHOR_PASSWORD);
