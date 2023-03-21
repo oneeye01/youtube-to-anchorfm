@@ -90,7 +90,7 @@ async function postEpisode(youtubeVideoInfo) {
 
     await page.goto('https://podcasters.spotify.com/pod/dashboard/episode/new');
 
-    await page.setViewport({ width: 1600, height: 789 });
+    await page.setViewport({ width: 1600, height: 1080 });
 
     await navigationPromise;
 
@@ -109,13 +109,7 @@ async function postEpisode(youtubeVideoInfo) {
     console.log('Logged in');
 
     console.log('Uploading audio file');
-    await page.evaluate(() => {
-      const item = document.querySelector('input[type=file]');
-      console.log('item ', item);
-    });
-    
-    /* await page.waitForFunction("document.querySelector('input[type=file]')"); */
-    /* await page.waitForSelector('input[type=file]'); */
+    await page.waitForSelector('input[type=file]');
     const inputFile = await page.$('input[type=file]');
     await inputFile.uploadFile(env.AUDIO_FILE);
 
