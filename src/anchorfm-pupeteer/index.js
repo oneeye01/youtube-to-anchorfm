@@ -110,10 +110,11 @@ async function postEpisode(youtubeVideoInfo) {
 
     console.log('Uploading audio file');
     await page.evaluate(() => {
-      console.log(document.querySelector('input[type=file]'));
+      const item = document.querySelector('input[type=file]');
+      console.log('item ', item);
     });
     
-    await page.waitForFunction("document.querySelector('input[type=file]')");
+    /* await page.waitForFunction("document.querySelector('input[type=file]')"); */
     /* await page.waitForSelector('input[type=file]'); */
     const inputFile = await page.$('input[type=file]');
     await inputFile.uploadFile(env.AUDIO_FILE);
