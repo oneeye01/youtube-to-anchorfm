@@ -109,7 +109,7 @@ async function postEpisode(youtubeVideoInfo) {
     console.log('Logged in');
 
     console.log('Uploading audio file');
-    await page.waitForSelector('input[tabindex=-1]');
+    await page.waitForSelector('button.dropzone');
     const inputFile = await page.$('input[type=file]');
     await inputFile.uploadFile(env.AUDIO_FILE);
 
